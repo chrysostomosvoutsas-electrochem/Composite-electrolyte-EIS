@@ -464,8 +464,7 @@ def parse_any_eis_file(file_name, file_bytes):
                 break
                 
         df = pd.read_csv(
-            io.StringIO("
-".join(lines[header_idx:])),
+            io.StringIO("\n".join(lines[header_idx:])),
             sep=None, engine='python'
         )
         
@@ -558,8 +557,7 @@ with st.sidebar.expander("📐 Cell Geometry & Setup", expanded=True):
     thickness_cm = thickness_um * 1e-4
     area_cm2 = np.pi * ((diameter_mm / 2.0) * 0.1) ** 2
     cell_constant = thickness_cm / area_cm2
-    st.info(f"Cell Factor ($L/A$): **{cell_constant:.4f} cm⁻¹**
-Area: **{area_cm2:.4f} cm²**")
+    st.info(f"Cell Factor ($L/A$): **{cell_constant:.4f} cm⁻¹**\nArea: **{area_cm2:.4f} cm²**")
 
 with st.sidebar.expander("📁 Ingest EIS Data", expanded=True):
     uploaded_files = st.file_uploader(
